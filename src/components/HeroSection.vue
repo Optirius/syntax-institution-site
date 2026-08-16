@@ -470,13 +470,18 @@ import {
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .hero-section {
+    padding-top: 130px;
+    padding-bottom: 4rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .hero-title {
-    font-size: 2.75rem;
+    font-size: 2.6rem;
   }
 
   .floating-badge-card {
@@ -490,31 +495,65 @@ import {
 
 @media (max-width: 640px) {
   .hero-section {
-    padding-top: 100px;
+    padding-top: 125px;
+    padding-bottom: 3rem;
+  }
+
+  .hero-collab-badge {
+    font-size: 0.76rem;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
   }
 
   .hero-title {
-    font-size: 2.15rem;
+    font-size: 1.95rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-highlights {
     grid-template-columns: 1fr;
+    gap: 0.65rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
   }
 
   .hero-stats {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.25rem;
+    gap: 1rem;
+    padding-top: 1.5rem;
   }
 
   .stat-divider {
     display: none;
   }
 
+  .hero-card-frame {
+    padding: 0.5rem;
+  }
+
   .floating-badge-card,
   .floating-location-card {
     position: static;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+    width: 100%;
     animation: none;
   }
 }

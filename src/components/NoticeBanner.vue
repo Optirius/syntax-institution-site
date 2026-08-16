@@ -290,6 +290,12 @@ import {
 }
 
 @media (max-width: 900px) {
+  .admission-banner-wrapper {
+    margin-top: 0;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
   .admission-banner-card {
     flex-direction: column;
     align-items: center;
@@ -300,6 +306,7 @@ import {
   .banner-left {
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .banner-tagline-wrap {
@@ -312,16 +319,25 @@ import {
 
   .discount-badge {
     transform: none;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .banner-qr-card {
+    width: 100%;
+    max-width: 200px;
   }
 
   .banner-actions {
+    width: 100%;
     flex-direction: column;
+    min-width: unset;
   }
 }
 
 @media (max-width: 640px) {
   .admission-banner-card {
-    padding: 1.25rem;
+    padding: 1.25rem 1rem;
   }
 
   .banner-headline {

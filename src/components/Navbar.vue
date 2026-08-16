@@ -635,17 +635,34 @@ onUnmounted(() => {
 }
 
 @media (max-width: 640px) {
+  .top-bar-left .secondary-phone,
+  .top-bar-left .divider {
+    display: none;
+  }
+
+  .top-bar-inner {
+    gap: 0.75rem;
+  }
+
+  .hotline-primary {
+    font-size: 0.75rem;
+  }
+
   .nav-inner {
-    height: 64px;
+    height: 60px;
   }
 
   .brand-logo-img {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
 
   .brand-title {
-    font-size: 1.02rem;
+    font-size: 0.95rem;
+  }
+
+  .mobile-menu-inner {
+    padding: 1.25rem 1rem;
   }
 }
 </style>
