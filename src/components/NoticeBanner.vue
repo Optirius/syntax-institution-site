@@ -36,10 +36,31 @@
             <QrCode :size="15" class="text-gold" />
             <span class="qr-title">SCAN TO GET STARTED</span>
           </div>
-          <div class="qr-img-wrapper">
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfWT3Cb3fQgH5qt90EI4nXCpvNu4nn70BcHUwBkJc1-4le8Pg/viewform?pli=1" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="qr-img-wrapper"
+            title="Click to open admission & course survey form"
+          >
             <img src="/images/qr-code.jpg" alt="Course Finder Survey QR Code" class="qr-code-image" />
-          </div>
+          </a>
           <span class="qr-caption">Choose course & enroll</span>
+          
+          <!-- Or go to this link -->
+          <div class="qr-link-row">
+            <span class="qr-or-text">or</span>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfWT3Cb3fQgH5qt90EI4nXCpvNu4nn70BcHUwBkJc1-4le8Pg/viewform?pli=1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="qr-form-link"
+              title="Open survey form directly"
+            >
+              <span>go to this link</span>
+              <ExternalLink :size="12" />
+            </a>
+          </div>
         </div>
 
         <!-- Right: Action Buttons -->
@@ -69,7 +90,8 @@ import {
   Check, 
   Calendar, 
   PhoneCall, 
-  QrCode 
+  QrCode,
+  ExternalLink 
 } from 'lucide-vue-next'
 </script>
 
@@ -263,6 +285,35 @@ import {
   font-weight: 600;
   margin-top: 0.35rem;
   white-space: nowrap;
+}
+
+.qr-link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+}
+
+.qr-or-text {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.qr-form-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-gold);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.qr-form-link:hover {
+  color: var(--color-red);
+  transform: translateY(-1px);
 }
 
 /* Actions */

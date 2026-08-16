@@ -110,10 +110,31 @@
             <QrCode :size="16" class="text-gold" />
             <span>SCAN TO ENROLL</span>
           </div>
-          <div class="prompt-qr-img-wrap">
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfWT3Cb3fQgH5qt90EI4nXCpvNu4nn70BcHUwBkJc1-4le8Pg/viewform?pli=1" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="prompt-qr-img-wrap"
+            title="Click to open admission & course survey form"
+          >
             <img src="/images/qr-code.jpg" alt="Scan to enroll & survey QR code" class="survey-qr-img" />
-          </div>
+          </a>
           <span class="prompt-qr-caption">Choose Course & Enroll</span>
+
+          <!-- Or go to this link -->
+          <div class="prompt-qr-link-row">
+            <span class="prompt-qr-or">or</span>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfWT3Cb3fQgH5qt90EI4nXCpvNu4nn70BcHUwBkJc1-4le8Pg/viewform?pli=1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="prompt-form-link"
+              title="Open survey form directly"
+            >
+              <span>go to this link</span>
+              <ExternalLink :size="12" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -134,7 +155,8 @@ import {
   MessageSquare, 
   Award, 
   Sparkles, 
-  QrCode 
+  QrCode,
+  ExternalLink 
 } from 'lucide-vue-next'
 
 const emit = defineEmits(['selectCourse'])
@@ -573,6 +595,35 @@ const handleInquire = (courseTitle) => {
   font-weight: 600;
   margin-top: 0.45rem;
   white-space: nowrap;
+}
+
+.prompt-qr-link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+  font-size: 0.76rem;
+}
+
+.prompt-qr-or {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.prompt-form-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-gold);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.prompt-form-link:hover {
+  color: var(--color-red);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 1024px) {
