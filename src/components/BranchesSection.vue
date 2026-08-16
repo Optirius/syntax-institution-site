@@ -1187,6 +1187,69 @@ onUnmounted(() => {
 }
 
 @media (max-width: 640px) {
+  .branches-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .branch-card {
+    padding: 1.75rem 1.25rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .branch-badge {
+    top: -12px;
+    right: 12px;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .branch-header {
+    gap: 0.85rem;
+  }
+
+  .branch-name {
+    font-size: 1.25rem;
+  }
+
+  .branch-address-block {
+    padding: 1rem;
+  }
+
+  .address-text {
+    font-size: 0.85rem;
+  }
+
+  .branch-card-actions {
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .branch-card-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .branch-contact-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .contact-pill {
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .photo-banner-inner {
+    grid-template-columns: 1fr;
+  }
+
   .photo-banner-content {
     padding: 1.5rem 1rem;
   }
@@ -1204,6 +1267,18 @@ onUnmounted(() => {
     justify-content: flex-start;
   }
 
+  .photo-banner-media {
+    min-height: 260px;
+  }
+
+  .slide-wrapper {
+    min-height: 260px;
+  }
+
+  .sneak-peek-img {
+    max-height: 280px;
+  }
+
   .lightbox-stage {
     padding: 0.5rem 0;
   }
@@ -1211,6 +1286,10 @@ onUnmounted(() => {
   .lightbox-nav-btn {
     width: 36px;
     height: 36px;
+  }
+
+  .lightbox-overlay {
+    padding: 0.75rem;
   }
 }
 </style>

@@ -1022,15 +1022,78 @@ defineExpose({
 
 @media (max-width: 640px) {
   .contact-card {
-    padding: 1.5rem;
+    padding: 1.5rem 1.15rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .form-row-2 {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .captcha-interactive-row {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .captcha-canvas-wrap {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  .map-card {
+    padding: 1.25rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .map-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .map-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .method-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .method-links .sep {
+    display: none;
+  }
+
+  .social-pills-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-link-pill {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .map-iframe-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .map-iframe-container iframe {
+    width: 100%;
+    max-width: 100%;
   }
 }
 </style>
