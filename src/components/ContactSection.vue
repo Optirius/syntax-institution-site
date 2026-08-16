@@ -381,7 +381,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, nextTick } from 'vue'
+import { ref, reactive, computed, onMounted, nextTick, watch } from 'vue'
 import { 
   MessageSquare, 
   User, 
@@ -402,6 +402,9 @@ import {
   MapPin, 
   Navigation 
 } from 'lucide-vue-next'
+import { useTheme } from '../composables/useTheme'
+
+const { theme } = useTheme()
 
 const props = defineProps({
   preselectedCourse: {
@@ -459,10 +462,17 @@ const drawCaptcha = (code) => {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    // Background gradient in pure black / dark charcoal
+    const isLight = theme.value === 'light'
+
+    // Background gradient adapted to active theme
     const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
-    grad.addColorStop(0, '#000000')
-    grad.addColorStop(1, '#181818')
+    if (isLight) {
+      grad.addColorStop(0, '#FFFFFF')
+      grad.addColorStop(1, '#E2E8F0')
+    } else {
+      grad.addColorStop(0, '#000000')
+      grad.addColorStop(1, '#181818')
+    }
     ctx.fillStyle = grad
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -478,7 +488,7 @@ const drawCaptcha = (code) => {
 
     // Distractor dots
     for (let i = 0; i < 30; i++) {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'
+      ctx.fillStyle = isLight ? 'rgba(0, 16, 41, 0.15)' : 'rgba(255, 255, 255, 0.3)'
       ctx.beginPath()
       ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, 1.2, 0, Math.PI * 2)
       ctx.fill()
@@ -499,14 +509,25 @@ const drawCaptcha = (code) => {
 
       ctx.translate(charX, charY)
       ctx.rotate(angle)
-      ctx.fillStyle = i % 2 === 0 ? '#F9A900' : '#FFFFFF'
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.9)'
+      if (isLight) {
+        ctx.fillStyle = i % 2 === 0 ? '#B45309' : '#001029'
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.2)'
+      } else {
+        ctx.fillStyle = i % 2 === 0 ? '#F9A900' : '#FFFFFF'
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.9)'
+      }
       ctx.shadowBlur = 4
       ctx.fillText(code[i], -8, 0)
       ctx.restore()
     }
   })
 }
+
+watch(theme, () => {
+  if (generatedCaptchaCode.value) {
+    drawCaptcha(generatedCaptchaCode.value)
+  }
+})
 
 // Validation
 const validate = () => {
@@ -599,8 +620,9 @@ defineExpose({
 
 <style scoped>
 .contact-section {
-  background: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-body);
+  border-top: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-normal);
 }
 
 .text-gold {
@@ -627,16 +649,17 @@ defineExpose({
 }
 
 .contact-card {
-  background: #0D0D0D;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 2.5rem;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
 }
 
 /* Form Styles */
 .form-card {
-  border-color: rgba(249, 169, 0, 0.2);
+  border-color: rgba(249, 169, 0, 0.25);
 }
 
 .form-header {
@@ -646,13 +669,13 @@ defineExpose({
 .form-title {
   font-size: 1.65rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin-bottom: 0.35rem;
 }
 
 .form-sub {
   font-size: 0.92rem;
-  color: #9cb1c9;
+  color: var(--text-sub);
   margin: 0;
 }
 
@@ -686,15 +709,15 @@ defineExpose({
 
 .field-error {
   font-size: 0.78rem;
-  color: #ff5e65;
+  color: var(--color-red);
   font-weight: 600;
   margin-top: 0.25rem;
 }
 
 /* Captcha */
 .captcha-box {
-  background: #050505;
-  border: 1px dashed rgba(249, 169, 0, 0.35);
+  background: var(--bg-card-subtle);
+  border: 1px dashed rgba(249, 169, 0, 0.4);
   border-radius: var(--radius-md);
   padding: 1.25rem;
   margin-bottom: 1.5rem;
@@ -711,7 +734,7 @@ defineExpose({
 
 .captcha-hint {
   font-size: 0.76rem;
-  color: #8fa0b5;
+  color: var(--text-muted);
 }
 
 .captcha-interactive-row {
@@ -727,8 +750,8 @@ defineExpose({
   align-items: center;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: #000000;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
 }
 
 .captcha-canvas {
@@ -740,8 +763,8 @@ defineExpose({
   right: 4px;
   top: 4px;
   bottom: 4px;
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
+  background: var(--bg-header);
+  border: 1px solid var(--border-subtle);
   color: var(--color-gold);
   cursor: pointer;
   padding: 0 0.5rem;
@@ -754,7 +777,7 @@ defineExpose({
 
 .btn-refresh-captcha:hover {
   background: var(--color-red);
-  color: var(--color-white);
+  color: #FFFFFF;
 }
 
 .is-spinning {
@@ -788,7 +811,7 @@ defineExpose({
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.78rem;
-  color: #8fa0b5;
+  color: var(--text-muted);
   text-align: center;
 }
 
@@ -816,12 +839,12 @@ defineExpose({
 
 .success-details p {
   font-size: 0.95rem;
-  color: #d1fae5;
+  color: var(--text-main);
   margin-bottom: 1.5rem;
 }
 
 .success-details strong {
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .success-actions {
@@ -840,10 +863,10 @@ defineExpose({
 .info-title {
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .contact-methods {
@@ -862,11 +885,11 @@ defineExpose({
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-icon-box);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-card);
   flex-shrink: 0;
 }
 
@@ -881,7 +904,7 @@ defineExpose({
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-slate-light);
+  color: var(--text-muted);
 }
 
 .method-links {
@@ -894,7 +917,7 @@ defineExpose({
 .method-value {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--text-main);
 }
 
 .method-value:hover {
@@ -907,7 +930,7 @@ defineExpose({
 }
 
 .sep {
-  color: rgba(255, 255, 255, 0.2);
+  color: var(--border-card);
 }
 
 .social-pills-row {
@@ -924,7 +947,7 @@ defineExpose({
   font-weight: 600;
   padding: 0.3rem 0.75rem;
   border-radius: var(--radius-pill);
-  color: var(--color-white);
+  color: #FFFFFF;
 }
 
 .social-link-pill.fb {
@@ -942,13 +965,13 @@ defineExpose({
 
 .hours-text {
   font-size: 0.88rem;
-  color: #b0c0d4;
+  color: var(--text-sub);
   margin: 0;
   line-height: 1.5;
 }
 
 .hours-text strong {
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 /* Map Card */
@@ -973,20 +996,20 @@ defineExpose({
 .map-title-wrap h4 {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin: 0;
 }
 
 .map-iframe-container {
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
 }
 
 .map-footer-address {
   font-size: 0.78rem;
-  color: #9cb1c9;
+  color: var(--text-muted);
   margin-top: 0.75rem;
   line-height: 1.4;
 }

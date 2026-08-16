@@ -146,10 +146,11 @@ import {
   min-height: 90vh;
   padding-top: 140px;
   padding-bottom: 5rem;
-  background: #000000;
+  background: var(--bg-body);
   overflow: hidden;
   display: flex;
   align-items: center;
+  transition: background-color var(--transition-normal);
 }
 
 /* Ambient Glows */
@@ -166,7 +167,7 @@ import {
   left: -5%;
   width: 450px;
   height: 450px;
-  background: rgba(229, 9, 20, 0.12);
+  background: var(--color-red-light);
 }
 
 .hero-glow-gold {
@@ -174,7 +175,7 @@ import {
   right: -5%;
   width: 500px;
   height: 500px;
-  background: rgba(249, 169, 0, 0.1);
+  background: var(--color-gold-light);
 }
 
 .hero-container {
@@ -200,8 +201,8 @@ import {
   align-items: center;
   gap: 0.6rem;
   font-size: 0.85rem;
-  color: var(--color-white);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  background: var(--bg-tag-badge);
   border: 1px solid rgba(249, 169, 0, 0.35);
   padding: 0.4rem 1rem;
   border-radius: var(--radius-pill);
@@ -213,8 +214,8 @@ import {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-gold);
-  box-shadow: 0 0 10px var(--color-gold);
+  background: #F9A900;
+  box-shadow: 0 0 10px #F9A900;
 }
 
 .hero-collab-badge strong {
@@ -226,25 +227,25 @@ import {
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: 1.25rem;
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .highlight-red {
   color: var(--color-red);
   display: block;
-  text-shadow: 0 0 30px rgba(229, 9, 20, 0.3);
+  text-shadow: 0 0 30px rgba(229, 9, 20, 0.25);
 }
 
 .hero-description {
   font-size: 1.12rem;
   line-height: 1.7;
-  color: #c0ccdc;
+  color: var(--text-sub);
   margin-bottom: 2rem;
   max-width: 620px;
 }
 
 .hero-description strong {
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 /* Highlights */
@@ -261,7 +262,7 @@ import {
   gap: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-white);
+  color: var(--text-main);
 }
 
 .text-gold {
@@ -291,7 +292,7 @@ import {
   align-items: center;
   gap: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .stat-item {
@@ -310,19 +311,19 @@ import {
 
 .stat-label {
   font-size: 0.85rem;
-  color: var(--color-slate-light);
+  color: var(--text-muted);
   line-height: 1.3;
 }
 
 .stat-label small {
-  color: #8899a6;
+  color: var(--text-slate);
   font-size: 0.75rem;
 }
 
 .stat-divider {
   width: 1px;
   height: 38px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--border-card);
 }
 
 /* Visual Frame */
@@ -334,9 +335,10 @@ import {
   position: relative;
   border-radius: var(--radius-xl);
   padding: 0.75rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), #0a0a0a);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-elevated);
+  transition: all var(--transition-normal);
 }
 
 .banner-preview-card {
@@ -371,7 +373,7 @@ import {
 }
 
 .overlay-tag {
-  background: var(--color-gold);
+  background: #F9A900;
   color: #000000;
   font-size: 0.72rem;
   font-weight: 700;
@@ -383,7 +385,7 @@ import {
 .overlay-text {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--color-white);
+  color: #FFFFFF;
 }
 
 /* Floating Badges */
@@ -391,11 +393,11 @@ import {
   position: absolute;
   top: -24px;
   right: -20px;
-  background: #0D0D0D;
+  background: var(--bg-card);
   border: 1px solid rgba(249, 169, 0, 0.4);
   padding: 0.85rem 1.1rem;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -421,12 +423,12 @@ import {
 .badge-title {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .badge-sub {
   font-size: 0.75rem;
-  color: #ff5e65;
+  color: var(--color-red);
   font-weight: 600;
 }
 
@@ -434,11 +436,11 @@ import {
   position: absolute;
   bottom: -24px;
   left: -20px;
-  background: #0D0D0D;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   padding: 0.85rem 1.1rem;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -447,13 +449,13 @@ import {
 
 .floating-location-card strong {
   font-size: 0.88rem;
-  color: var(--color-white);
+  color: var(--text-heading);
   display: block;
 }
 
 .floating-location-card p {
   font-size: 0.75rem;
-  color: var(--color-slate-light);
+  color: var(--text-muted);
   margin: 0;
 }
 

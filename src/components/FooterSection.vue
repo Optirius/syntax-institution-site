@@ -1,68 +1,79 @@
 <template>
   <footer class="site-footer">
     <div class="container">
-      <!-- Main Footer Grid -->
       <div class="footer-grid">
-        <!-- Col 1: Brand & Tagline -->
-        <div class="footer-col brand-col">
+        <!-- Col 1: Brand & Slogan -->
+        <div class="footer-col footer-col-brand">
           <div class="footer-brand">
-            <img src="/images/logo.jpg" alt="Syntax Institution Emblem" class="footer-logo-img" />
+            <img src="/images/logo.jpg" alt="Syntax Institution" class="footer-logo-img" />
             <div>
-              <h3 class="footer-brand-title">SYNTAX INSTITUTION</h3>
+              <span class="footer-brand-title">SYNTAX INSTITUTION</span>
               <span class="footer-brand-tagline">EXCELLENCE IN THOUGHT • POWER IN LANGUAGE</span>
             </div>
           </div>
           <p class="footer-desc">
-            Empowering students with concept-based teaching, small batch guidance, and specialized exam mastery in English Medium academics, O/A Levels, and Japanese Language (JLPT N5 & N4).
+            Premier educational coaching institution in Dhaka providing concept-based O/A Level tuition, official Japanese JLPT language programs, and comprehensive English language development.
           </p>
           <div class="collab-badge-mini">
             <Sparkles :size="14" class="text-gold" />
-            <span>Partnered with <strong>Mainichikotoba</strong></span>
+            <span>Academic Partner: <strong>MAINICHIKOTOBA</strong></span>
           </div>
         </div>
 
-        <!-- Col 2: Academic Programs -->
+        <!-- Col 2: Specialized Programs -->
         <div class="footer-col">
-          <h4 class="footer-heading">Specialized Programs</h4>
+          <h4 class="footer-heading">Our Programs</h4>
           <ul class="footer-links">
-            <li><a href="#programs" @click="emitCourse('Japanese Language – JLPT N5 & N4')">Japanese Language – JLPT N5 & N4</a></li>
-            <li><a href="#programs" @click="emitCourse('O Level & A Level Preparation')">O Level & A Level Preparation</a></li>
-            <li><a href="#programs" @click="emitCourse('English Medium Academic Support')">English Medium Academic Support</a></li>
-            <li><a href="#programs" @click="emitCourse('Practical Spoken English')">Practical Spoken English</a></li>
-            <li><a href="#programs" @click="emitCourse('IELTS Preparation')">IELTS Exam Preparation</a></li>
-            <li><a href="#programs" @click="emitCourse('Basic to Intermediate English')">Basic to Intermediate English</a></li>
+            <li>
+              <a href="#programs" @click="emitCourse('Japanese Language – JLPT N5 & N4')">Japanese JLPT (N5 & N4)</a>
+            </li>
+            <li>
+              <a href="#programs" @click="emitCourse('O Level & A Level Preparation')">O & A Level Preparation</a>
+            </li>
+            <li>
+              <a href="#programs" @click="emitCourse('English Medium Academic Support')">English Medium Academic Tutoring</a>
+            </li>
+            <li>
+              <a href="#programs" @click="emitCourse('Practical Spoken English')">Practical Spoken English</a>
+            </li>
+            <li>
+              <a href="#programs" @click="emitCourse('IELTS Preparation (Academic & General)')">IELTS Preparation (7.5+)</a>
+            </li>
+            <li>
+              <a href="#programs" @click="emitCourse('Basic to Intermediate English')">Basic to Intermediate English</a>
+            </li>
           </ul>
         </div>
 
         <!-- Col 3: Quick Navigation -->
         <div class="footer-col">
-          <h4 class="footer-heading">Quick Navigation</h4>
+          <h4 class="footer-heading">Quick Links</h4>
           <ul class="footer-links">
             <li><a href="#hero">Home</a></li>
-            <li><a href="#programs">All Courses & Specialties</a></li>
-            <li><a href="#collaboration">Japanese Language Center</a></li>
-            <li><a href="#why-us">Why Syntax Institution</a></li>
-            <li><a href="#branches">Campuses & Facilities</a></li>
-            <li><a href="#contact">Admission & Counselling Form</a></li>
+            <li><a href="#programs">Courses & Curricula</a></li>
+            <li><a href="#collaboration">Japanese Language Wing</a></li>
+            <li><a href="#why-us">Why Choose Us</a></li>
+            <li><a href="#branches">Campuses & Centers</a></li>
+            <li><a href="#contact">Admission Inquiry</a></li>
           </ul>
         </div>
 
-        <!-- Col 4: Branches & Contact -->
+        <!-- Col 4: Contact & Campuses -->
         <div class="footer-col">
-          <h4 class="footer-heading">Campuses & Contacts</h4>
+          <h4 class="footer-heading">Campuses & Contact</h4>
           <div class="footer-contact-items">
             <div class="f-contact-item">
               <MapPin :size="16" class="text-gold flex-shrink" />
               <div>
-                <strong>Dhanmondi (Science Lab):</strong>
-                <p>32/2 Latimi Mall, 1st Fl (Opp. Teacher's Training College)</p>
+                <strong>Dhanmondi Center (Science Lab):</strong>
+                <p>32/2 Latimi Shopping Mall, 1st Floor, Dhaka 1205</p>
               </div>
             </div>
 
             <div class="f-contact-item">
-              <MapPin :size="16" class="text-red flex-shrink" />
+              <MapPin :size="16" class="text-gold flex-shrink" />
               <div>
-                <strong>Shyamoli (Head Office):</strong>
+                <strong>Shyamoli Branch (Head Office):</strong>
                 <p>64/KC, PC Culture Housing Society, Dhaka 1207</p>
               </div>
             </div>
@@ -77,13 +88,10 @@
 
             <div class="f-contact-item">
               <Mail :size="16" class="text-gold flex-shrink" />
-              <div>
-                <a href="mailto:syntax.institution@gmail.com">syntax.institution@gmail.com</a>
-              </div>
+              <a href="mailto:syntax.institution@gmail.com">syntax.institution@gmail.com</a>
             </div>
           </div>
 
-          <!-- Social Links -->
           <div class="footer-socials">
             <a href="https://wa.me/8801737733026" target="_blank" rel="noopener noreferrer" class="f-social-btn whatsapp" title="WhatsApp Chat">
               <MessageSquare :size="16" />
@@ -131,11 +139,12 @@ const emitCourse = (courseName) => {
 
 <style scoped>
 .site-footer {
-  background: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
   padding-top: 5rem;
   padding-bottom: 2.5rem;
   position: relative;
+  transition: background-color var(--transition-normal);
 }
 
 .text-gold {
@@ -176,7 +185,7 @@ const emitCourse = (courseName) => {
 .footer-brand-title {
   font-size: 1.2rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--text-heading);
   line-height: 1.1;
 }
 
@@ -191,7 +200,7 @@ const emitCourse = (courseName) => {
 
 .footer-desc {
   font-size: 0.9rem;
-  color: #9cb1c9;
+  color: var(--text-sub);
   line-height: 1.65;
   margin-bottom: 1.5rem;
 }
@@ -201,8 +210,8 @@ const emitCourse = (courseName) => {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.78rem;
-  color: #c0d0e0;
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  background: var(--bg-tag-badge);
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(249, 169, 0, 0.25);
@@ -216,7 +225,7 @@ const emitCourse = (courseName) => {
 .footer-heading {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 0.5rem;
@@ -241,7 +250,7 @@ const emitCourse = (courseName) => {
 
 .footer-links a {
   font-size: 0.88rem;
-  color: #a0b4c8;
+  color: var(--text-muted);
   transition: all var(--transition-fast);
 }
 
@@ -263,22 +272,22 @@ const emitCourse = (courseName) => {
   align-items: flex-start;
   gap: 0.65rem;
   font-size: 0.85rem;
-  color: #a0b4c8;
+  color: var(--text-sub);
 }
 
 .f-contact-item strong {
-  color: var(--color-white);
+  color: var(--text-heading);
   display: block;
 }
 
 .f-contact-item p {
   font-size: 0.82rem;
-  color: #9cb1c9;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .f-contact-item a {
-  color: var(--color-white);
+  color: var(--text-main);
   transition: color var(--transition-fast);
 }
 
@@ -299,45 +308,48 @@ const emitCourse = (courseName) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  background: var(--bg-tag-badge);
+  border: 1px solid var(--border-subtle);
   transition: all var(--transition-fast);
 }
 
 .f-social-btn.whatsapp:hover {
   background: #25D366;
   border-color: #25D366;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
 .f-social-btn.fb:hover {
   background: #1877F2;
   border-color: #1877F2;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
 .f-social-btn.insta:hover {
   background: #E4405F;
   border-color: #E4405F;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
 /* Bottom Bar */
 .footer-bottom {
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   font-size: 0.82rem;
-  color: #8899a6;
+  color: var(--text-muted);
   flex-wrap: wrap;
 }
 
 .copyright-text strong {
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .footer-legal {

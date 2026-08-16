@@ -39,7 +39,7 @@
           <div class="qr-img-wrapper">
             <img src="/images/qr-code.jpg" alt="Course Finder Survey QR Code" class="qr-code-image" />
           </div>
-          <span class="qr-caption">Choose the right course & enroll</span>
+          <span class="qr-caption">Choose course & enroll</span>
         </div>
 
         <!-- Right: Action Buttons -->
@@ -83,15 +83,16 @@ import {
 }
 
 .admission-banner-card {
-  background: linear-gradient(135deg, #111111 0%, #050505 100%);
+  background: var(--bg-card);
   border: 2px solid var(--color-red);
   border-radius: var(--radius-xl);
   padding: 1.75rem 2rem;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(229, 9, 20, 0.15);
+  box-shadow: var(--shadow-elevated), 0 0 25px rgba(229, 9, 20, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+  transition: all var(--transition-normal);
 }
 
 .banner-left {
@@ -104,7 +105,7 @@ import {
 /* Discount Badge */
 .discount-badge {
   background: var(--color-red);
-  color: var(--color-white);
+  color: #FFFFFF;
   padding: 1rem 1.25rem;
   border-radius: var(--radius-md);
   text-align: center;
@@ -173,13 +174,13 @@ import {
 .banner-headline {
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--text-heading);
   letter-spacing: 0.02em;
 }
 
 .banner-subtext {
   font-size: 0.9rem;
-  color: #a0b2c6;
+  color: var(--text-sub);
   margin: 0;
 }
 
@@ -198,15 +199,15 @@ import {
   font-size: 0.76rem;
   font-weight: 600;
   color: var(--color-gold);
-  background: rgba(249, 169, 0, 0.08);
-  border: 1px solid rgba(249, 169, 0, 0.2);
+  background: var(--color-gold-light);
+  border: 1px solid rgba(249, 169, 0, 0.25);
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-pill);
 }
 
 /* QR Code Card */
 .banner-qr-card {
-  background: #000000;
+  background: var(--bg-surface);
   border: 1px solid rgba(249, 169, 0, 0.35);
   border-radius: var(--radius-md);
   padding: 0.75rem 0.85rem;
@@ -215,7 +216,7 @@ import {
   align-items: center;
   text-align: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast);
 }
 
@@ -246,7 +247,7 @@ import {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .qr-code-image {
@@ -258,7 +259,7 @@ import {
 
 .qr-caption {
   font-size: 0.65rem;
-  color: #9cb1c9;
+  color: var(--text-muted);
   font-weight: 600;
   margin-top: 0.35rem;
   white-space: nowrap;

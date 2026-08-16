@@ -1,21 +1,25 @@
 <template>
   <section id="why-us" class="section why-section">
     <div class="container">
+      <!-- Header -->
       <div class="section-header">
         <div class="section-tag">
-          <ShieldCheck :size="15" />
-          <span>The Syntax Advantage</span>
+          <ShieldCheck :size="16" />
+          <span>The Syntax Difference</span>
         </div>
-        <h2 class="section-title">
-          Why Choose <span class="text-gold">Syntax Institution</span>?
-        </h2>
+        <h2 class="section-title">Why Choose Syntax Institution?</h2>
         <p class="section-subtitle">
-          We combine academic rigor with supportive mentoring to help every student achieve their personal best.
+          We combine academic rigor with personalized mentorship to turn conceptual understanding into exceptional results.
         </p>
       </div>
 
+      <!-- Why Grid -->
       <div class="why-grid">
-        <div v-for="(item, idx) in reasons" :key="idx" class="why-card">
+        <div 
+          v-for="item in reasons" 
+          :key="item.id"
+          class="why-card"
+        >
           <div class="why-icon-box">
             <component :is="item.icon" :size="26" class="why-icon" />
           </div>
@@ -24,12 +28,12 @@
         </div>
       </div>
 
-      <!-- Slogan Banner -->
+      <!-- Institution Quote / Slogan Strip -->
       <div class="slogan-strip">
         <div class="slogan-inner">
           <span class="slogan-quote">“</span>
-          <span class="slogan-text">Excellence in Thought. Power in Language.</span>
-          <span class="slogan-sub">— SYNTAX INSTITUTION PHILOSOPHY</span>
+          <h3 class="slogan-text">LEARN • GROW • ACHIEVE</h3>
+          <span class="slogan-sub">EXCELLENCE IN THOUGHT. POWER IN LANGUAGE.</span>
         </div>
       </div>
     </div>
@@ -41,51 +45,58 @@ import {
   ShieldCheck, 
   BrainCircuit, 
   Users, 
-  Laptop, 
   Award, 
-  TrendingUp, 
-  Compass 
+  Laptop, 
+  FileCheck2, 
+  HeartHandshake 
 } from 'lucide-vue-next'
 
 const reasons = [
   {
-    icon: BrainCircuit,
-    title: 'Concept-Based Teaching',
-    description: 'We prioritize core conceptual mastery over blind memorization, ensuring long-term understanding and problem-solving agility for competitive exams.'
+    id: 1,
+    title: 'Concept-Based Pedagogy',
+    description: 'We prioritize core conceptual mastery and logical reasoning rather than superficial rote learning, ensuring deep analytical mastery.',
+    icon: BrainCircuit
   },
   {
-    icon: Users,
+    id: 2,
     title: 'Small Batches & Individual Care',
-    description: 'Our small batch size (8–12 students) guarantees personalized attention, continuous doubt-clearing, and targeted guidance for every learner.'
+    description: 'Strict batch size limits (10-15 students) guarantee that every student receives dedicated faculty attention and tailored feedback.',
+    icon: Users
   },
   {
-    icon: Award,
-    title: 'Experienced Faculty Mentors',
-    description: 'Learn from seasoned academic teachers and certified Japanese trainers who bring years of classroom success and exam strategy mastery.'
+    id: 3,
+    title: 'Expert Subject Mentors',
+    description: 'Our faculty consists of certified educators, native Japanese instructors, and Cambridge/Edexcel top-grade track record mentors.',
+    icon: Award
   },
   {
-    icon: Laptop,
-    title: 'Flexible Dual-Mode Classes',
-    description: 'Attend physically at our modern Dhanmondi or Shyamoli campuses, or connect to interactive live online classes with full digital whiteboard support.'
+    id: 4,
+    title: 'Dual Learning Mode (Offline & Online)',
+    description: 'Enjoy air-conditioned modern campus facilities at Dhanmondi & Shyamoli, with seamless high-definition interactive live online classes.',
+    icon: Laptop
   },
   {
-    icon: TrendingUp,
-    title: 'Mock Exams & Progress Tracking',
-    description: 'Frequent chapter-wise assessments, full-length timed mock tests, and actionable performance analytics keep students ahead of their test schedules.'
+    id: 5,
+    title: 'Rigorous Mock Testing Systems',
+    description: 'Regular chapter quizzes, past-paper analysis, and full-length exam simulations to build real exam temperament and time management.',
+    icon: FileCheck2
   },
   {
-    icon: Compass,
-    title: 'Free Academic & Study Counselling',
-    description: 'Every student receives complimentary admission counselling and international study guidance for higher education and language careers.'
+    id: 6,
+    title: 'Free Student Counselling',
+    description: 'Get free one-on-one academic, career, and overseas study guidance to map out clear university and language goals with experts.',
+    icon: HeartHandshake
   }
 ]
 </script>
 
 <style scoped>
 .why-section {
-  background: #000000;
+  background: var(--bg-body);
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-normal);
 }
 
 .text-gold {
@@ -100,10 +111,11 @@ const reasons = [
 }
 
 .why-card {
-  background: #0D0D0D;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-card);
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
@@ -124,7 +136,7 @@ const reasons = [
 .why-card:hover {
   transform: translateY(-5px);
   border-color: rgba(249, 169, 0, 0.35);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-elevated);
 }
 
 .why-card:hover::before {
@@ -135,7 +147,7 @@ const reasons = [
   width: 54px;
   height: 54px;
   border-radius: var(--radius-md);
-  background: rgba(249, 169, 0, 0.1);
+  background: var(--color-gold-light);
   border: 1px solid rgba(249, 169, 0, 0.25);
   display: flex;
   align-items: center;
@@ -150,24 +162,25 @@ const reasons = [
 .why-card-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin-bottom: 0.75rem;
 }
 
 .why-card-desc {
   font-size: 0.92rem;
-  color: #9cb1c9;
+  color: var(--text-sub);
   line-height: 1.6;
   margin: 0;
 }
 
 /* Slogan Strip */
 .slogan-strip {
-  background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
+  background: var(--bg-card);
   border: 1px solid rgba(249, 169, 0, 0.3);
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
   text-align: center;
+  box-shadow: var(--shadow-card);
 }
 
 .slogan-inner {
@@ -191,7 +204,7 @@ const reasons = [
   font-size: 1.75rem;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .slogan-sub {
@@ -199,7 +212,7 @@ const reasons = [
   font-weight: 700;
   letter-spacing: 0.15em;
   color: var(--color-gold);
-  margin-top: 0.35rem;
+  text-transform: uppercase;
 }
 
 @media (max-width: 1024px) {
@@ -208,7 +221,7 @@ const reasons = [
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .why-grid {
     grid-template-columns: 1fr;
   }

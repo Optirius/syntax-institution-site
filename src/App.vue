@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted } from 'vue'
 import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import NoticeBanner from './components/NoticeBanner.vue'
@@ -50,6 +50,9 @@ import BranchesSection from './components/BranchesSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import FooterSection from './components/FooterSection.vue'
 import FloatingQuickActions from './components/FloatingQuickActions.vue'
+import { useTheme } from './composables/useTheme'
+
+const { initTheme } = useTheme()
 
 const selectedCourse = ref('Japanese Language – JLPT N5 & N4')
 const contactSectionRef = ref(null)
@@ -67,6 +70,10 @@ const handleCourseSelection = (courseTitle) => {
     }
   })
 }
+
+onMounted(() => {
+  initTheme()
+})
 </script>
 
 <style scoped>

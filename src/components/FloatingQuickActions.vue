@@ -94,14 +94,15 @@ onUnmounted(() => {
 }
 
 .float-top-btn {
-  background: var(--color-navy-card);
-  border: 1px solid rgba(249, 169, 0, 0.4);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   color: var(--color-gold);
 }
 
 .float-top-btn:hover {
-  background: var(--color-gold);
-  color: var(--color-navy-dark);
+  background: #F9A900;
+  color: #000000;
+  border-color: #F9A900;
 }
 
 .float-call-btn {

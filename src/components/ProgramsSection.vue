@@ -3,24 +3,21 @@
     <div class="container">
       <!-- Section Header -->
       <div class="section-header">
-        <div class="section-tag tag-red">
-          <GraduationCap :size="15" />
-          <span>Our Specialized Programs</span>
+        <div class="section-tag">
+          <GraduationCap :size="16" />
+          <span>Specialized Curricula</span>
         </div>
-        <h2 class="section-title">
-          Empowering Academic Success & <br />
-          <span class="text-gold">Global Language Fluency</span>
-        </h2>
+        <h2 class="section-title">Academic & Language Excellence</h2>
         <p class="section-subtitle">
-          Structured courses taught with concept-driven methodologies, small batch sizes, and focused exam preparation for school academics, career growth, and study abroad.
+          Structured curricula designed for measurable score growth, concept mastery, and global communication proficiency.
         </p>
       </div>
 
-      <!-- Category Filter Tabs -->
+      <!-- Filter Tabs -->
       <div class="filter-tabs">
         <button 
           v-for="cat in categories" 
-          :key="cat.id" 
+          :key="cat.id"
           class="filter-btn"
           :class="{ active: activeCategory === cat.id }"
           @click="activeCategory = cat.id"
@@ -37,7 +34,7 @@
           :key="program.id"
           class="program-card"
         >
-          <!-- Card Header & Badge -->
+          <!-- Program Card Top -->
           <div class="program-top">
             <div class="program-icon-box" :class="program.iconBgClass">
               <component :is="program.icon" :size="24" />
@@ -48,9 +45,9 @@
           <h3 class="program-name">{{ program.title }}</h3>
           <p class="program-desc">{{ program.description }}</p>
 
-          <!-- Core Curriculum Bullets -->
+          <!-- Curriculum Highlights -->
           <div class="curriculum-highlights">
-            <h4 class="highlights-heading">Key Focus Areas:</h4>
+            <div class="highlights-heading">Key Features:</div>
             <ul class="highlights-list">
               <li v-for="(feat, idx) in program.features" :key="idx">
                 <CheckCircle2 :size="14" class="feat-check" />
@@ -59,14 +56,21 @@
             </ul>
           </div>
 
-          <!-- Card Footer Action -->
+          <!-- Card Footer & Action -->
           <div class="program-footer">
             <div class="program-meta">
-              <span class="meta-item"><Users :size="14" /> {{ program.batchSize }}</span>
-              <span class="meta-item"><Clock :size="14" /> {{ program.duration }}</span>
+              <span class="meta-item">
+                <Users :size="14" />
+                <span>{{ program.batchSize }}</span>
+              </span>
+              <span class="meta-item">
+                <Clock :size="14" />
+                <span>{{ program.duration }}</span>
+              </span>
             </div>
+
             <button 
-              @click="handleInquire(program.title)" 
+              @click="handleInquire(program.title)"
               class="btn btn-outline-gold btn-sm w-full"
             >
               <span>Inquire for this Course</span>
@@ -149,50 +153,50 @@ const programs = [
     id: 'japanese-jlpt',
     category: ['language', 'test-prep'],
     title: 'Japanese Language – JLPT N5 & N4',
-    description: 'Comprehensive Japanese training covering Kanji, vocabulary, grammar, reading comprehension, and listening in academic partnership with Mainichikotoba.',
+    description: 'Conducted in official Academic Collaboration with MAINICHIKOTOBA Japanese Language Training Centre. Comprehensive preparation covering Kanji, Grammar, Vocabulary, Reading, and Listening.',
     features: [
-      'Hiragana, Katakana & 200+ Core Kanji Characters',
-      'JLPT N5 & N4 structured syllabus & mock tests',
-      'Native pronunciation & Japanese culture etiquette',
-      'Academic pathway guidance for higher studies in Japan'
+      'Original Japanese curriculum & native-standard accents',
+      'Regular JLPT mock exams with question dissection',
+      'Visa guidance & Japanese university study pathway counselling',
+      'Interactive kanji memorization mnemonics & listening audio labs'
     ],
-    mode: 'Campus & Live Online',
-    batchSize: 'Small Batches (8-12 students)',
+    mode: 'Offline & Live Online',
+    batchSize: 'Small Batches (12-15)',
     duration: '3 - 6 Months Track',
     icon: Languages,
     iconBgClass: 'bg-red-glow'
   },
   {
-    id: 'olevel-alevel',
+    id: 'o-a-level',
     category: ['academic', 'test-prep'],
     title: 'O Level & A Level Preparation',
-    description: 'Structured Cambridge & Edexcel curriculum coaching with concept-based explanations, past paper problem-solving, and intensive exam preparation.',
+    description: 'Rigorous, concept-based coaching for Cambridge (CAIE) and Edexcel curricula across STEM, Commerce, and Humanities disciplines.',
     features: [
-      'Concept-first breakdown of difficult syllabus topics',
-      '10+ years past paper drills & mark-scheme techniques',
-      'Continuous weekly chapter tests & mock exams',
-      'Individual subject mentorship & doubt-clearing'
+      'Top-tier experienced faculty with stellar past results',
+      'Chapter-wise categorized past paper solving sessions',
+      'Regular full-syllabus mock exams replicating real test conditions',
+      'Specialized 1-on-1 problem-solving clinics before exams'
     ],
-    mode: 'Campus & Online',
-    batchSize: 'Focused Batch / 1-on-1',
-    duration: 'Academic Session',
+    mode: 'Offline & Online',
+    batchSize: 'Limited 10-12 Students',
+    duration: 'Year-Round & Crash Prep',
     icon: GraduationCap,
     iconBgClass: 'bg-gold-glow'
   },
   {
-    id: 'english-medium',
+    id: 'english-medium-academic',
     category: ['academic'],
     title: 'English Medium Academic Support',
-    description: 'Personalized academic guidance for English Medium students (Class 1 to A Level), fostering deep conceptual understanding and academic confidence.',
+    description: 'Continuous academic tutoring for Class 1 to A Level students following British and International English medium curricula.',
     features: [
-      'Comprehensive coverage of school curriculum & homework support',
-      'Mathematics, Science, English & Business studies guidance',
-      'Regular evaluation & progress reports to parents',
-      'Supportive environment to eliminate exam anxiety'
+      'Subject mastery in Math, Physics, Chemistry, Biology & English',
+      'Daily school homework tracking and syllabus coverage',
+      'Weekly progress evaluations and parent update reports',
+      'Building deep logical foundations and analytical reasoning'
     ],
-    mode: 'Campus & Online',
-    batchSize: 'Individual & Small Group',
-    duration: 'Year-Round Support',
+    mode: 'Offline & Online',
+    batchSize: 'Individual Care Groups',
+    duration: 'Full Academic Term',
     icon: BookOpen,
     iconBgClass: 'bg-red-glow'
   },
@@ -200,17 +204,17 @@ const programs = [
     id: 'spoken-english',
     category: ['language'],
     title: 'Practical Spoken English',
-    description: 'Interactive conversation course engineered to build natural English speaking fluency, correct pronunciation, sentence construction, and presentation skills.',
+    description: 'Dynamic conversational practice designed to eliminate speaking hesitation, build natural fluency, and refine pronunciation and voice modulation.',
     features: [
-      'Daily conversational drills & role-playing scenarios',
-      'Pronunciation tuning & common grammatical error correction',
-      'Public speaking, debate, and impromptu speaking drills',
-      'Professional communication & interview preparation'
+      'Daily conversational drills, debates, and presentation modules',
+      'Accent softening and phonetic pronunciation improvement',
+      'Real-world situational role-playing & workplace scenarios',
+      'Constructive feedback and public speaking confidence drills'
     ],
-    mode: 'Offline & Online',
-    batchSize: 'Interactive Circles',
-    duration: '2 - 3 Months Track',
-    icon: MessageSquare,
+    mode: 'Offline & Live Online',
+    batchSize: 'Interactive Cohorts',
+    duration: '8 - 12 Weeks Track',
+    icon: Globe,
     iconBgClass: 'bg-gold-glow'
   },
   {
@@ -265,8 +269,9 @@ const handleInquire = (courseTitle) => {
 
 <style scoped>
 .programs-section {
-  background: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-body);
+  border-top: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-normal);
 }
 
 .text-gold {
@@ -287,28 +292,29 @@ const handleInquire = (courseTitle) => {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #0D0D0D;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-slate-light);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-muted);
   padding: 0.6rem 1.3rem;
   border-radius: var(--radius-pill);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
 }
 
 .filter-btn:hover {
   border-color: var(--color-gold);
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .filter-btn.active {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
+  background: #F9A900;
+  border-color: #F9A900;
   color: #000000;
   font-weight: 700;
-  box-shadow: 0 4px 16px rgba(249, 169, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(249, 169, 0, 0.35);
 }
 
 /* Programs Grid */
@@ -320,12 +326,13 @@ const handleInquire = (courseTitle) => {
 }
 
 .program-card {
-  background: #0D0D0D;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-card);
   transition: all var(--transition-normal);
   position: relative;
 }
@@ -333,7 +340,7 @@ const handleInquire = (courseTitle) => {
 .program-card:hover {
   transform: translateY(-6px);
   border-color: rgba(249, 169, 0, 0.4);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7), 0 0 20px rgba(249, 169, 0, 0.1);
+  box-shadow: var(--shadow-elevated), 0 0 20px rgba(249, 169, 0, 0.1);
 }
 
 .program-top {
@@ -350,19 +357,19 @@ const handleInquire = (courseTitle) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-icon-box);
 }
 
 .bg-red-glow {
-  background: rgba(229, 9, 20, 0.12);
-  color: #ff5e65;
-  border: 1px solid rgba(229, 9, 20, 0.3);
+  background: var(--color-red-light);
+  color: var(--color-red);
+  border: 1px solid rgba(229, 9, 20, 0.25);
 }
 
 .bg-gold-glow {
-  background: rgba(249, 169, 0, 0.12);
+  background: var(--color-gold-light);
   color: var(--color-gold);
-  border: 1px solid rgba(249, 169, 0, 0.3);
+  border: 1px solid rgba(249, 169, 0, 0.25);
 }
 
 .badge-mode {
@@ -372,33 +379,33 @@ const handleInquire = (courseTitle) => {
   letter-spacing: 0.05em;
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.06);
-  color: #a0b2c6;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-tag-badge);
+  color: var(--text-muted);
+  border: 1px solid var(--border-card);
 }
 
 .program-name {
   font-size: 1.28rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin-bottom: 0.75rem;
   line-height: 1.3;
 }
 
 .program-desc {
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: var(--text-sub);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
 /* Highlights */
 .curriculum-highlights {
-  background: #050505;
+  background: var(--bg-card-subtle);
   border-radius: var(--radius-md);
   padding: 1rem;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
 }
 
 .highlights-heading {
@@ -422,7 +429,7 @@ const handleInquire = (courseTitle) => {
   align-items: flex-start;
   gap: 0.5rem;
   font-size: 0.82rem;
-  color: #c9d5e4;
+  color: var(--text-main);
   line-height: 1.4;
 }
 
@@ -439,7 +446,7 @@ const handleInquire = (courseTitle) => {
   flex-direction: column;
   gap: 1rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .program-meta {
@@ -447,7 +454,7 @@ const handleInquire = (courseTitle) => {
   align-items: center;
   justify-content: space-between;
   font-size: 0.78rem;
-  color: var(--color-slate-light);
+  color: var(--text-muted);
 }
 
 .meta-item {
@@ -462,14 +469,15 @@ const handleInquire = (courseTitle) => {
 
 /* Bottom Prompt */
 .program-consultation-prompt {
-  background: linear-gradient(135deg, rgba(229, 9, 20, 0.15), #0a0a0a);
-  border: 1px solid rgba(229, 9, 20, 0.3);
+  background: var(--bg-collab-strip);
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 2.25rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2.5rem;
+  box-shadow: var(--shadow-card);
 }
 
 .prompt-badge {
@@ -479,7 +487,7 @@ const handleInquire = (courseTitle) => {
   font-size: 0.76rem;
   font-weight: 700;
   color: var(--color-gold);
-  background: rgba(249, 169, 0, 0.1);
+  background: var(--color-gold-light);
   border: 1px solid rgba(249, 169, 0, 0.25);
   padding: 0.2rem 0.65rem;
   border-radius: var(--radius-pill);
@@ -491,13 +499,13 @@ const handleInquire = (courseTitle) => {
 .prompt-text h4 {
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin-bottom: 0.5rem;
 }
 
 .prompt-text p {
   font-size: 0.95rem;
-  color: #a0b2c6;
+  color: var(--text-sub);
   margin-bottom: 1.25rem;
   line-height: 1.6;
   max-width: 680px;
@@ -512,7 +520,7 @@ const handleInquire = (courseTitle) => {
 
 /* Prompt QR Card */
 .prompt-qr-card {
-  background: #000000;
+  background: var(--bg-card);
   border: 1px solid rgba(249, 169, 0, 0.35);
   border-radius: var(--radius-md);
   padding: 0.9rem 1rem;
@@ -521,7 +529,7 @@ const handleInquire = (courseTitle) => {
   align-items: center;
   text-align: center;
   flex-shrink: 0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  box-shadow: var(--shadow-card);
   transition: transform var(--transition-fast);
 }
 
@@ -549,7 +557,7 @@ const handleInquire = (courseTitle) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .survey-qr-img {
@@ -561,7 +569,7 @@ const handleInquire = (courseTitle) => {
 
 .prompt-qr-caption {
   font-size: 0.7rem;
-  color: #9cb1c9;
+  color: var(--text-muted);
   font-weight: 600;
   margin-top: 0.45rem;
   white-space: nowrap;

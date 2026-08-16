@@ -1,30 +1,30 @@
 <template>
   <section id="branches" class="section branches-section">
     <div class="container">
+      <!-- Header -->
       <div class="section-header">
         <div class="section-tag tag-red">
-          <MapPin :size="15" />
-          <span>Our Campuses</span>
+          <MapPin :size="16" />
+          <span>Strategic Locations</span>
         </div>
-        <h2 class="section-title">
-          Conveniently Located in <span class="text-gold">Dhaka</span>
-        </h2>
+        <h2 class="section-title">Our Campuses in Dhaka</h2>
         <p class="section-subtitle">
-          Visit either of our modern, fully-equipped learning centers in Shyamoli and Dhanmondi for in-person admissions, counselling, and offline classes.
+          Visit our modern, air-conditioned coaching facilities situated in central educational hubs of Dhaka.
         </p>
       </div>
 
+      <!-- Branches Grid -->
       <div class="branches-grid">
         <!-- Dhanmondi Branch Card -->
         <div class="branch-card highlight-card">
-          <div class="branch-badge">✨ New Office & Japanese Language Wing</div>
+          <div class="branch-badge">✨ New Office & Center</div>
           <div class="branch-header">
             <div class="branch-icon-box">
-              <Building2 :size="24" class="text-red" />
+              <Building2 :size="24" class="text-gold" />
             </div>
             <div>
               <h3 class="branch-name">Dhanmondi Branch</h3>
-              <span class="branch-type">Science Lab Campus</span>
+              <span class="branch-type">Science Lab Hub</span>
             </div>
           </div>
 
@@ -32,16 +32,16 @@
             <MapPin :size="18" class="icon-address text-gold" />
             <p class="address-text">
               <strong>32/2 Latimi Shopping Mall, 1st Floor</strong><br />
-              Opposite to Teacher's Training College, Science Lab,<br />
-              Dhaka 1205, Bangladesh.
+              Opposite to Teacher's Training College,<br />
+              Science Lab, Dhaka 1205, Bangladesh.
             </p>
           </div>
 
           <div class="branch-features">
-            <span class="feat-tag"><Check :size="12" /> Japanese Training Wing</span>
-            <span class="feat-tag"><Check :size="12" /> Air-Conditioned Classrooms</span>
-            <span class="feat-tag"><Check :size="12" /> Audio-Visual Lab</span>
-            <span class="feat-tag"><Check :size="12" /> Admission Desk</span>
+            <span class="feat-tag"><Check :size="12" /> JLPT Japanese Wing</span>
+            <span class="feat-tag"><Check :size="12" /> AC High-Tech Classrooms</span>
+            <span class="feat-tag"><Check :size="12" /> Central Dhaka Location</span>
+            <span class="feat-tag"><Check :size="12" /> Admission & Counselling Desk</span>
           </div>
 
           <div class="branch-contact-links">
@@ -113,29 +113,40 @@
           </div>
 
           <div class="branch-card-actions">
-            <a href="#contact" class="btn btn-gold btn-sm w-full">
-              <span>Contact Shyamoli Office</span>
+            <a 
+              href="https://maps.app.goo.gl/tmzCf7yf5RPKm5DC9" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-outline-white btn-sm w-full"
+            >
+              <Navigation :size="14" />
+              <span>Open in Google Maps</span>
+            </a>
+            <a href="#contact" class="btn btn-primary btn-sm w-full">
+              <span>Book Visit</span>
               <ArrowRight :size="14" />
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Campus Sneak Peek Photo Showcase -->
+      <!-- Campus Sneak Peek Photo Banner -->
       <div class="campus-photo-banner">
         <div class="photo-banner-inner">
           <div class="photo-banner-content">
-            <span class="photo-tag">Campus Preview</span>
-            <h3>Modern, Comfortable & Supportive Learning Atmosphere</h3>
-            <p>Our classrooms are designed to maximize focus, collaboration, and individual academic care.</p>
+            <span class="photo-tag">Classroom & Center Sneak Peek</span>
+            <h3>Modern, Distraction-Free Learning Spaces</h3>
+            <p>
+              Designed for optimal student engagement with climate-controlled study rooms, multimedia interactive boards, ergonomic seating, and comprehensive library resource collections.
+            </p>
             <div class="facility-items">
               <div class="facility-item">
                 <CheckCircle2 :size="16" class="text-gold" />
-                <span>Small Batch Seating Layouts</span>
+                <span>Fully Air Conditioned Classrooms</span>
               </div>
               <div class="facility-item">
                 <CheckCircle2 :size="16" class="text-gold" />
-                <span>Direct 1-on-1 Faculty Mentoring</span>
+                <span>Audio-Visual JLPT Listening Setup</span>
               </div>
               <div class="facility-item">
                 <CheckCircle2 :size="16" class="text-gold" />
@@ -171,8 +182,9 @@ import {
 
 <style scoped>
 .branches-section {
-  background: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-body);
+  border-top: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-normal);
 }
 
 .text-gold {
@@ -191,20 +203,21 @@ import {
 }
 
 .branch-card {
-  background: #0D0D0D;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
   position: relative;
+  box-shadow: var(--shadow-card);
   transition: all var(--transition-normal);
 }
 
 .branch-card.highlight-card {
   border-color: rgba(229, 9, 20, 0.4);
-  background: linear-gradient(145deg, #141414, #080808);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 9, 20, 0.1);
+  background: var(--bg-card-highlight);
+  box-shadow: var(--shadow-elevated), 0 0 20px rgba(229, 9, 20, 0.1);
 }
 
 .branch-card:hover {
@@ -217,7 +230,7 @@ import {
   top: -14px;
   right: 24px;
   background: var(--color-red);
-  color: var(--color-white);
+  color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.35rem 0.85rem;
@@ -226,7 +239,7 @@ import {
 }
 
 .branch-badge.head-badge {
-  background: var(--color-gold);
+  background: #F9A900;
   color: #000000;
   box-shadow: 0 4px 12px rgba(249, 169, 0, 0.35);
 }
@@ -242,17 +255,17 @@ import {
   width: 52px;
   height: 52px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-icon-box);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border-card);
 }
 
 .branch-name {
   font-size: 1.45rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--text-heading);
   line-height: 1.2;
 }
 
@@ -266,11 +279,11 @@ import {
   display: flex;
   align-items: flex-start;
   gap: 0.85rem;
-  background: #000000;
+  background: var(--bg-card-subtle);
   padding: 1.2rem;
   border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
 }
 
 .icon-address {
@@ -280,13 +293,13 @@ import {
 
 .address-text {
   font-size: 0.92rem;
-  color: #c0d0e0;
+  color: var(--text-sub);
   line-height: 1.6;
   margin: 0;
 }
 
 .address-text strong {
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .branch-features {
@@ -302,11 +315,11 @@ import {
   gap: 0.3rem;
   font-size: 0.76rem;
   font-weight: 600;
-  color: #a0b2c6;
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  background: var(--bg-tag-badge);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
 }
 
 .branch-contact-links {
@@ -324,15 +337,15 @@ import {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-gold);
-  background: rgba(249, 169, 0, 0.08);
-  border: 1px solid rgba(249, 169, 0, 0.2);
+  background: var(--color-gold-light);
+  border: 1px solid rgba(249, 169, 0, 0.25);
   padding: 0.4rem 0.8rem;
   border-radius: var(--radius-pill);
   transition: all var(--transition-fast);
 }
 
 .contact-pill:hover {
-  background: var(--color-gold);
+  background: #F9A900;
   color: #000000;
 }
 
@@ -348,11 +361,11 @@ import {
 
 /* Campus Photo Showcase */
 .campus-photo-banner {
-  background: #0D0D0D;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .photo-banner-inner {
@@ -378,13 +391,13 @@ import {
 .photo-banner-content h3 {
   font-size: 1.75rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--text-heading);
   margin-bottom: 1rem;
 }
 
 .photo-banner-content p {
   font-size: 0.95rem;
-  color: #9cb1c9;
+  color: var(--text-sub);
   margin-bottom: 1.5rem;
 }
 
@@ -400,7 +413,7 @@ import {
   gap: 0.6rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--text-main);
 }
 
 .photo-banner-media {
@@ -425,7 +438,7 @@ import {
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
   font-size: 0.8rem;
-  color: var(--color-gold);
+  color: #F9A900;
   font-weight: 600;
 }
 

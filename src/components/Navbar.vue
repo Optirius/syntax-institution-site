@@ -26,6 +26,7 @@
             <span class="gold-dot"></span>
             <span>Campuses: Shyamoli & Dhanmondi</span>
           </div>
+
           <div class="top-socials">
             <a 
               href="https://wa.me/8801737733026" 
@@ -81,8 +82,20 @@
           <a href="#contact" class="nav-link" :class="{ active: activeSection === 'contact' }">Contact</a>
         </div>
 
-        <!-- Action Button & Mobile Toggle -->
+        <!-- Action Button & Theme Toggle for Nav -->
         <div class="nav-actions">
+          <!-- Single Dedicated Theme Switch Button -->
+          <button 
+            @click="toggleTheme" 
+            class="nav-theme-toggle-btn" 
+            :title="theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+            aria-label="Toggle theme mode"
+          >
+            <Sun v-if="theme === 'dark'" :size="15" class="theme-icon sun" />
+            <Moon v-else :size="15" class="theme-icon moon" />
+            <span class="theme-btn-text">{{ theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode' }}</span>
+          </button>
+
           <a href="#contact" class="btn btn-primary btn-sm nav-cta-btn">
             <span>Free Counselling</span>
             <ArrowRight :size="14" />
@@ -104,6 +117,16 @@
       <!-- Mobile Dropdown Menu -->
       <div class="mobile-menu-drawer" :class="{ 'is-open': mobileMenuOpen }">
         <div class="mobile-menu-inner">
+          <!-- Mobile Theme Switch Row -->
+          <div class="mobile-theme-row">
+            <span class="mobile-theme-label">Appearance Theme</span>
+            <button @click="toggleTheme" class="mobile-theme-btn">
+              <Sun v-if="theme === 'dark'" :size="16" class="text-gold" />
+              <Moon v-else :size="16" class="text-gold" />
+              <span>{{ theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode' }}</span>
+            </button>
+          </div>
+
           <a href="#hero" class="mobile-nav-link" @click="closeMobileMenu">
             <span>Home</span>
           </a>
@@ -154,8 +177,13 @@ import {
   ArrowRight, 
   MessageSquare, 
   Facebook, 
-  Instagram 
+  Instagram,
+  Sun,
+  Moon
 } from 'lucide-vue-next'
+import { useTheme } from '../composables/useTheme'
+
+const { theme, toggleTheme, initTheme } = useTheme()
 
 const mobileMenuOpen = ref(false)
 const isScrolled = ref(false)
@@ -189,6 +217,7 @@ const handleScroll = () => {
 }
 
 onMounted(() => {
+  initTheme()
   window.addEventListener('scroll', handleScroll)
 })
 
@@ -211,11 +240,12 @@ onUnmounted(() => {
    Top Announcement Bar
    ========================================================================== */
 .top-bar {
-  background: #000000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
   font-size: 0.8rem;
   padding: 0.45rem 0;
-  color: var(--color-slate-light);
+  color: var(--text-muted);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
 }
 
 .top-bar-inner {
@@ -236,7 +266,7 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: #a0b2c6;
+  color: var(--text-sub);
   white-space: nowrap;
   transition: color var(--transition-fast);
 }
@@ -247,18 +277,18 @@ onUnmounted(() => {
 
 .hotline-primary {
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--text-main);
 }
 
 .divider {
-  color: rgba(255, 255, 255, 0.2);
+  color: var(--border-card);
   user-select: none;
 }
 
 .top-bar-right {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
   flex-shrink: 0;
 }
 
@@ -290,38 +320,41 @@ onUnmounted(() => {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-tag-badge);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
   transition: all var(--transition-fast);
 }
 
 .social-icon:hover {
   background: var(--color-red);
-  color: var(--color-white);
+  color: #FFFFFF;
+  border-color: var(--color-red);
   transform: translateY(-1px);
 }
 
 .social-icon.whatsapp-icon:hover {
   background: #25D366;
+  border-color: #25D366;
 }
 
 /* ==========================================================================
    Main Navbar
    ========================================================================== */
 .main-nav {
-  background: rgba(0, 0, 0, 0.95);
+  background: var(--bg-header);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-subtle);
   transition: all var(--transition-normal);
 }
 
 .main-nav.is-scrolled {
-  background: rgba(0, 0, 0, 0.98);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8);
+  background: var(--bg-header-scrolled);
+  box-shadow: var(--shadow-card);
   border-bottom-color: rgba(249, 169, 0, 0.25);
 }
 
@@ -348,7 +381,7 @@ onUnmounted(() => {
   border-radius: var(--radius-sm);
   object-fit: cover;
   border: 1px solid rgba(249, 169, 0, 0.35);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
 }
 
@@ -362,7 +395,7 @@ onUnmounted(() => {
   font-size: 1.18rem;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: var(--color-white);
+  color: var(--text-heading);
   line-height: 1.1;
   white-space: nowrap;
 }
@@ -383,13 +416,13 @@ onUnmounted(() => {
   align-items: center;
   gap: 1.75rem;
   margin-left: auto;
-  margin-right: 1.5rem;
+  margin-right: 1.25rem;
 }
 
 .nav-link {
   font-size: 0.92rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--text-sub);
   padding: 0.45rem 0;
   position: relative;
   white-space: nowrap;
@@ -409,7 +442,7 @@ onUnmounted(() => {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-white);
+  color: var(--text-heading);
 }
 
 .nav-link:hover::after,
@@ -424,6 +457,43 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
+/* Single Nav Theme Toggle Button with Text */
+.nav-theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.nav-theme-toggle-btn:hover {
+  border-color: var(--color-gold);
+  background: var(--bg-card-hover);
+  color: var(--color-gold);
+  transform: translateY(-1px);
+}
+
+.nav-theme-toggle-btn .theme-icon.sun {
+  color: #F9A900;
+}
+
+.nav-theme-toggle-btn .theme-icon.moon {
+  color: #6366F1;
+}
+
+.theme-btn-text {
+  line-height: 1;
+}
+
 .nav-cta-btn {
   flex-shrink: 0;
   white-space: nowrap;
@@ -431,9 +501,9 @@ onUnmounted(() => {
 
 .mobile-toggle-btn {
   display: none;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-white);
+  background: var(--bg-tag-badge);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
   cursor: pointer;
   padding: 0.45rem;
   border-radius: var(--radius-sm);
@@ -441,7 +511,7 @@ onUnmounted(() => {
 }
 
 .mobile-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--bg-card-hover);
   color: var(--color-gold);
 }
 
@@ -455,12 +525,12 @@ onUnmounted(() => {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints (Clean breakpoint at 1180px)
+   Responsive Breakpoints
    ========================================================================== */
-@media (max-width: 1240px) {
+@media (max-width: 1280px) {
   .nav-links-desktop {
-    gap: 1.2rem;
-    margin-right: 1rem;
+    gap: 1.1rem;
+    margin-right: 0.75rem;
   }
 
   .brand-tagline {
@@ -468,14 +538,16 @@ onUnmounted(() => {
   }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1140px) {
   .top-bar-left .email-link,
-  .top-bar-left .pipe-divider {
+  .top-bar-left .pipe-divider,
+  .top-bar-right .location-badge {
     display: none;
   }
 
   .nav-links-desktop,
-  .nav-cta-btn {
+  .nav-cta-btn,
+  .nav-theme-toggle-btn {
     display: none;
   }
 
@@ -489,14 +561,15 @@ onUnmounted(() => {
     display: block;
     max-height: 0;
     overflow: hidden;
-    background: #080808;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-drawer);
+    border-top: 1px solid var(--border-subtle);
     transition: max-height 0.4s ease;
   }
 
   .mobile-menu-drawer.is-open {
-    max-height: 560px;
+    max-height: 600px;
     border-bottom: 2px solid var(--color-red);
+    box-shadow: var(--shadow-elevated);
   }
 
   .mobile-menu-inner {
@@ -506,12 +579,41 @@ onUnmounted(() => {
     gap: 0.65rem;
   }
 
+  .mobile-theme-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .mobile-theme-label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-heading);
+  }
+
+  .mobile-theme-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-main);
+    background: var(--bg-tag-badge);
+    border: 1px solid var(--border-card);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+  }
+
   .mobile-nav-link {
     font-size: 1.02rem;
     font-weight: 600;
-    color: var(--color-white);
+    color: var(--text-heading);
     padding: 0.65rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--border-subtle);
     transition: all var(--transition-fast);
   }
 
@@ -533,10 +635,6 @@ onUnmounted(() => {
 }
 
 @media (max-width: 640px) {
-  .top-bar {
-    display: none;
-  }
-
   .nav-inner {
     height: 64px;
   }
