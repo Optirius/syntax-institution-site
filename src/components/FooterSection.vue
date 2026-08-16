@@ -1,0 +1,365 @@
+<template>
+  <footer class="site-footer">
+    <div class="container">
+      <!-- Main Footer Grid -->
+      <div class="footer-grid">
+        <!-- Col 1: Brand & Tagline -->
+        <div class="footer-col brand-col">
+          <div class="footer-brand">
+            <img src="/images/logo.jpg" alt="Syntax Institution Emblem" class="footer-logo-img" />
+            <div>
+              <h3 class="footer-brand-title">SYNTAX INSTITUTION</h3>
+              <span class="footer-brand-tagline">EXCELLENCE IN THOUGHT • POWER IN LANGUAGE</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Empowering students with concept-based teaching, small batch guidance, and specialized exam mastery in English Medium academics, O/A Levels, and Japanese Language (JLPT N5 & N4).
+          </p>
+          <div class="collab-badge-mini">
+            <Sparkles :size="14" class="text-gold" />
+            <span>Partnered with <strong>Mainichikotoba</strong></span>
+          </div>
+        </div>
+
+        <!-- Col 2: Academic Programs -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Specialized Programs</h4>
+          <ul class="footer-links">
+            <li><a href="#programs" @click="emitCourse('Japanese Language – JLPT N5 & N4')">Japanese Language – JLPT N5 & N4</a></li>
+            <li><a href="#programs" @click="emitCourse('O Level & A Level Preparation')">O Level & A Level Preparation</a></li>
+            <li><a href="#programs" @click="emitCourse('English Medium Academic Support')">English Medium Academic Support</a></li>
+            <li><a href="#programs" @click="emitCourse('Practical Spoken English')">Practical Spoken English</a></li>
+            <li><a href="#programs" @click="emitCourse('IELTS Preparation')">IELTS Exam Preparation</a></li>
+            <li><a href="#programs" @click="emitCourse('Basic to Intermediate English')">Basic to Intermediate English</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Quick Navigation -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#programs">All Courses & Specialties</a></li>
+            <li><a href="#collaboration">Japanese Language Center</a></li>
+            <li><a href="#why-us">Why Syntax Institution</a></li>
+            <li><a href="#branches">Campuses & Facilities</a></li>
+            <li><a href="#contact">Admission & Counselling Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Branches & Contact -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Campuses & Contacts</h4>
+          <div class="footer-contact-items">
+            <div class="f-contact-item">
+              <MapPin :size="16" class="text-gold flex-shrink" />
+              <div>
+                <strong>Dhanmondi (Science Lab):</strong>
+                <p>32/2 Latimi Mall, 1st Fl (Opp. Teacher's Training College)</p>
+              </div>
+            </div>
+
+            <div class="f-contact-item">
+              <MapPin :size="16" class="text-red flex-shrink" />
+              <div>
+                <strong>Shyamoli (Head Office):</strong>
+                <p>64/KC, PC Culture Housing Society, Dhaka 1207</p>
+              </div>
+            </div>
+
+            <div class="f-contact-item">
+              <Phone :size="16" class="text-gold flex-shrink" />
+              <div>
+                <a href="tel:+8801737733026">+880 1737-733026</a> / 
+                <a href="tel:+8801711811639">+880 1711-811639</a>
+              </div>
+            </div>
+
+            <div class="f-contact-item">
+              <Mail :size="16" class="text-gold flex-shrink" />
+              <div>
+                <a href="mailto:syntax.institution@gmail.com">syntax.institution@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="footer-socials">
+            <a href="https://wa.me/8801737733026" target="_blank" rel="noopener noreferrer" class="f-social-btn whatsapp" title="WhatsApp Chat">
+              <MessageSquare :size="16" />
+            </a>
+            <a href="https://www.facebook.com/people/Syntax-Institution/61579199366752/" target="_blank" rel="noopener noreferrer" class="f-social-btn fb" title="Facebook Page">
+              <Facebook :size="16" />
+            </a>
+            <a href="https://www.instagram.com/syntaxinstitution/" target="_blank" rel="noopener noreferrer" class="f-social-btn insta" title="Instagram">
+              <Instagram :size="16" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; {{ new Date().getFullYear() }} <strong>Syntax Institution</strong>. All Rights Reserved. Excellence in Thought. Power in Language.
+        </p>
+        <div class="footer-legal">
+          <span>Academic Collaboration with MAINICHIKOTOBA Japanese Language Training Centre</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script setup>
+import { 
+  Sparkles, 
+  MapPin, 
+  Phone, 
+  Mail, 
+  MessageSquare, 
+  Facebook, 
+  Instagram 
+} from 'lucide-vue-next'
+
+const emit = defineEmits(['selectCourse'])
+
+const emitCourse = (courseName) => {
+  emit('selectCourse', courseName)
+}
+</script>
+
+<style scoped>
+.site-footer {
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 5rem;
+  padding-bottom: 2.5rem;
+  position: relative;
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-red {
+  color: var(--color-red);
+}
+
+.flex-shrink {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.9fr 1.3fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+/* Col 1 */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.footer-logo-img {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(249, 169, 0, 0.4);
+}
+
+.footer-brand-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+}
+
+.footer-brand-tagline {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  display: block;
+  margin-top: 2px;
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  color: #9cb1c9;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.collab-badge-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: #c0d0e0;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(249, 169, 0, 0.25);
+}
+
+.collab-badge-mini strong {
+  color: var(--color-gold);
+}
+
+/* Headings */
+.footer-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--color-red);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.88rem;
+  color: #a0b4c8;
+  transition: all var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-gold);
+  padding-left: 4px;
+}
+
+/* Contact Items */
+.footer-contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.f-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: #a0b4c8;
+}
+
+.f-contact-item strong {
+  color: var(--color-white);
+  display: block;
+}
+
+.f-contact-item p {
+  font-size: 0.82rem;
+  color: #9cb1c9;
+  margin: 0;
+}
+
+.f-contact-item a {
+  color: var(--color-white);
+  transition: color var(--transition-fast);
+}
+
+.f-contact-item a:hover {
+  color: var(--color-gold);
+}
+
+/* Socials */
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.f-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-fast);
+}
+
+.f-social-btn.whatsapp:hover {
+  background: #25D366;
+  border-color: #25D366;
+  transform: translateY(-2px);
+}
+
+.f-social-btn.fb:hover {
+  background: #1877F2;
+  border-color: #1877F2;
+  transform: translateY(-2px);
+}
+
+.f-social-btn.insta:hover {
+  background: #E4405F;
+  border-color: #E4405F;
+  transform: translateY(-2px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-size: 0.82rem;
+  color: #8899a6;
+  flex-wrap: wrap;
+}
+
+.copyright-text strong {
+  color: var(--color-white);
+}
+
+.footer-legal {
+  color: var(--color-gold);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>

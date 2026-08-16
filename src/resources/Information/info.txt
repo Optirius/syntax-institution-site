@@ -1,0 +1,41 @@
+google maps link - https://maps.app.goo.gl/tmzCf7yf5RPKm5DC9
+instagram link - https://www.instagram.com/syntaxinstitution/
+faebook link - https://www.facebook.com/people/Syntax-Institution/61579199366752/
+whatsapp number - +880 1737-733026
+email - syntax.institution@gmail.com
+
+Comapny name - syntax instituion
+
+Main company  line- Excellence in Thought. Power in Language.
+
+
+
+
+Specialties
+Japanese Language – JLPT N5 & N4
+Japanese language courses for JLPT N5 & N4 covering vocabulary, grammar, Kanji, reading, listening and exam preparation.
+O Level & A Level Preparation
+Structured O & A Level academic support with concept-based teaching, subject guidance and exam-focused preparation.
+English Medium Academic Support
+Academic support for English Medium students with concept-based teaching, practice and individual guidance.
+Basic to Intermediate English
+Build a strong foundation in grammar, vocabulary, sentence formation and everyday English communication.
+Spoken English
+Practical Spoken English course designed to improve fluency, pronunciation, vocabulary and speaking confidence.
+IELTS Preparation
+IELTS preparation focusing on Listening, Reading, Writing and Speaking with practical strategies and guidance.
+
+
+
+
+🎨 Recommended Primary Palette
+| Role             | Color           | HEX       | Usage                                   |
+| ---------------- | --------------- | --------- | --------------------------------------- |
+| **Primary Navy** | Deep Navy       | `#001029` | Main website background, header, footer |
+| **Primary Red**  | Institution Red | `#E50914` | Logo accent, buttons, links, highlights |
+| **Gold**         | Academic Gold   | `#F9A900` | Headings, badges, section accents       |
+| **Black**        | Pure Black      | `#000000` | Cards, hero sections, strong contrast   |
+| **White**        | Pure White      | `#FFFFFF` | Main text on dark backgrounds           |
+| **Off White**    | Soft White      | `#F5F5F5` | Light backgrounds, content sections     |
+| **Slate Gray**   | Muted Text      | `#677B83` | Secondary text, descriptions            |
+| **Light Gray**   | Border Gray     | `#D9DDE1` | Borders, dividers, inputs               |
