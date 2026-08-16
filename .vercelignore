@@ -1,0 +1,5 @@
+.git
+.github
+graphify-out/
+src/resources/
+*.md
